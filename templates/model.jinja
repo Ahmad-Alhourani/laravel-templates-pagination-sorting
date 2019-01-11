@@ -38,16 +38,18 @@
         protected $fillable = [ {% for f in data['fillable'] %}
             "{{ f }}",{% endfor %}
         ];
-        {% if data['timestamp'] ==True%}
-        public $timestamps =["create_at","update_at"];{%else%}
-        public $timestamps =false;{% endif%}
-
        /**
        * @var array
        */
         protected $fieldSearchable = [ {% for f in data['searchable'] %}
             "{{ f }}",{% endfor %}
         ];
+
+        {% if data['timestamp'] ==True%}
+        public $timestamps =["create_at","update_at"];{%else%}
+        public $timestamps =false;{% endif%}
+
+
 
         {% if data['hasSoftDelete'] ==True%}
         /**
